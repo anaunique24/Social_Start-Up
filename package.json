@@ -9,6 +9,10 @@
     "start": "nodemon server.js",
     "seed": "node utils/seed.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anaunique24/Social_Start-Up"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
