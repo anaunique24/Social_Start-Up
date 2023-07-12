@@ -6,4 +6,5 @@ const connectionString =
 
 connect(connectionString);
 
+//exporting the mongodb connection
 module.exports = connection;
