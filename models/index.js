@@ -1,3 +1,4 @@
+//requiring functions inside models files
 const Thought = require('./thought');
 const User = require('./user');
 
