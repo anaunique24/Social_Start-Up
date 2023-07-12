@@ -1,20 +1,45 @@
-//User:
+const {Schema, model} = require('mongoose');
 
-// username
+const userSchema = new Schema(
+    {
+        username: {
+            type: String,
+            unique: true,
+            required: "Username is required",
+            trim: true,
+        },
+        email: {
+            type: String,
+            unique: true,
+            required: "Email is required",
+            match: [/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/],
+        },
+        thoughts: [
+            {
+              type: Schema.Types.ObjectId,
+              ref: "Thought",
+            },
+          ],
+      
+        friends: [
+            {
+              type: Schema.Types.ObjectId,
+              ref: "User",
+            },
+          ],
+        },
+        {
+          toJSON: {
+            virtuals: true,
+          },
+          id: false,
+        }
+      )
 
-    // String
-    // Unique
-    // Required
-    // Trimmed
+userSchema.virtual('friendCount').get(function () {
+    return this.friends.length;
+});
 
-// email
-    // String
-    // Required
-    // Unique
-    // Must match a valid email address (look into Mongoose's matching validation)
+const User = model('User', userSchema);
 
-// thoughts
-    // Array of _id values referencing the Thought model
-
-// friends
-    // Array of _id values referencing the User model (self-reference)
+module.exports = User;
