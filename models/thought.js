@@ -1,35 +1,5 @@
 const {Schema, model} = require('mongoose');
-
-const reactionSchema = new Schema(
-    {
-      reactionId: {
-        // Mongoose's ObjectId data type
-        type: Schema.Types.ObjectId,
-        // Default value is set to a new ObjectId
-        default: () => new Types.ObjectId(),
-      },
-      reactionBody: {
-        type: String,
-        required: true,
-        maxlength: 280,
-      },
-      username: {
-        type: String,
-        required: true,
-      },
-      createdAt: {
-        type: Date,
-        // Set default value to the current timestamp
-        default: Date.now,
-      },
-    },
-    {
-      toJSON: {
-        virtuals: true,
-      },
-      id: false,
-    }
-  );
+const reactionSchema = require('./reaction')
 
 const thoughtSchema = new Schema (
     {
@@ -41,7 +11,8 @@ const thoughtSchema = new Schema (
        },
     createdAt: {
         type: Date, 
-        default: Date.now
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp)
        },
     username: {
         type: String,
@@ -49,14 +20,15 @@ const thoughtSchema = new Schema (
     },
     // Array of nested documents created with the reactionSchema
     reaction: [reactionSchema],
-
-toJSON: {
-    virtuals: true,
-    getters: true,
+    },
+    {
+      toJSON: {
+          virtuals: true,
+          getters: true
+      },
+      id: false
   },
-  id: false,
-}
-);
+  );
 
 thoughtSchema.virtual("reactionCount").get(function () {
 return this.reactions.length;
