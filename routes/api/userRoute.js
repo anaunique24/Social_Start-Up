@@ -18,7 +18,7 @@ router
 
 // /api/users/:id
 router
-.route('/:id')
+.route('/:userId')
 .get(getUserById)
 .put(updateUser)
 .delete(deleteUser);
