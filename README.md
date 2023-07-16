@@ -34,7 +34,17 @@
  Each database collection was tested in insomnia ensuring that all GET, PUT, POST, and DELETE routes work properly. 
  
  ## Demo
+ GET routes:
+https://github.com/anaunique24/Social_Start-Up/assets/128003940/3e894ec8-2d43-4385-a588-e5d4a48df14b
 
+POST routes:
+https://github.com/anaunique24/Social_Start-Up/assets/128003940/427de6cc-9eb0-49b6-88d2-3f8db140f9fc
+
+PUT routes:
+https://github.com/anaunique24/Social_Start-Up/assets/128003940/9c17583e-4070-43bb-949f-9947c44a5ae4
+
+DELETE routes
+https://github.com/anaunique24/Social_Start-Up/assets/128003940/fec9faa7-bc51-4105-8fd4-1cc70322123a
 
  ## Questions
  Any Questions can be answered at anaunique@icloud.com
